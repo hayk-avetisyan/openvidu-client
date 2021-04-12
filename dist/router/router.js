@@ -7,7 +7,7 @@ var Router = /** @class */ (function () {
     }
     Router.prototype.route = function (request, response) {
         var status = false;
-        Router.prepareResponse(response);
+        Router.prepareResponse(request, response);
         if (request.url && request.method) {
             var path = Object.getOwnPropertyNames(routes_1.routes).find(function (url) { var _a; return ((_a = request.url) === null || _a === void 0 ? void 0 : _a.match(url)) != null; });
             if (path) {
@@ -23,8 +23,10 @@ var Router = /** @class */ (function () {
             response.end();
         }
     };
-    Router.prepareResponse = function (response) {
+    Router.prepareResponse = function (request, response) {
         response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "*");
+        response.setHeader("Access-Control-Allow-Headers", "*");
         response.setHeader("Content-Type", "application/json");
     };
     return Router;

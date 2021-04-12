@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.readRequestBody = exports.roleName = exports.fromJson = exports.toJson = void 0;
+var openvidu_node_client_1 = require("openvidu-node-client");
 function toJson(key, value) {
     var _a;
     if (value)
@@ -15,13 +16,13 @@ exports.fromJson = fromJson;
 function roleName(role) {
     switch (role) {
         case "1": {
-            return "SUBSCRIBER";
+            return openvidu_node_client_1.OpenViduRole.SUBSCRIBER;
         }
         case "2": {
-            return "PUBLISHER";
+            return openvidu_node_client_1.OpenViduRole.PUBLISHER;
         }
         case "3": {
-            return "MODERATOR";
+            return openvidu_node_client_1.OpenViduRole.MODERATOR;
         }
     }
 }

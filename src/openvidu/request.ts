@@ -5,7 +5,7 @@ import {fromJson, toJson} from "../utils";
 
 export class Request {
 
-    private domain = "https://127.0.0.1:8091/openvidu/api/";
+    private domain = "https://127.0.0.1:8091/api/";
     private path = "";
     private method: Method = "GET";
     private headers: Map = {};
@@ -56,6 +56,8 @@ export class Request {
             headers: this.headers,
             data: toJson(this.data)
         };
+
+        console.warn(config);
 
         return new Observable(observer => {
 

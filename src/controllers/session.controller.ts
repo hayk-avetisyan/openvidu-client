@@ -4,14 +4,14 @@ import {readRequestBody, toJson} from "../utils";
 
 export class SessionController {
 
-    static create(request: IncomingMessage, response: ServerResponse): void {
+    static async create(request: IncomingMessage, response: ServerResponse): Promise<void> {
 
-        readRequestBody(request, (sessionId: any) => {
+        readRequestBody(request, (roomId: any) => {
 
             new Request()
                 .setPath("sessions")
                 .setMethod("POST")
-                .setDataProperty("customSessionId", sessionId)
+                .setDataProperty("customSessionId", roomId)
                 .request().
             subscribe({
                 next(session) {
@@ -19,8 +19,8 @@ export class SessionController {
                     response.end();
                 },
                 error(error) {
-                    if(error.response.status == 409) {
-                        response.write(toJson("sessionId", sessionId));
+                    if(error?.response?.status === 409) {
+                        response.write(toJson("sessionId", roomId));
                         response.end();
                     }
                     else {

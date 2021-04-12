@@ -9,7 +9,7 @@ var axios_1 = __importDefault(require("axios"));
 var utils_1 = require("../utils");
 var Request = /** @class */ (function () {
     function Request() {
-        this.domain = "https://127.0.0.1:8091/openvidu/api/";
+        this.domain = "https://127.0.0.1:8091/api/";
         this.path = "";
         this.method = "GET";
         this.headers = {};
@@ -49,6 +49,7 @@ var Request = /** @class */ (function () {
             headers: this.headers,
             data: utils_1.toJson(this.data)
         };
+        console.warn(config);
         return new rxjs_1.Observable(function (observer) {
             axios_1.default.request(config).then(function (response) {
                 try {

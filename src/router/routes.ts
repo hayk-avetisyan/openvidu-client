@@ -7,5 +7,6 @@ export const routes: any = {
     },
     "/connection/create": {
         "POST": ConnectionController.create,
+        "OPTIONS": ConnectionController.options,
     }
 };

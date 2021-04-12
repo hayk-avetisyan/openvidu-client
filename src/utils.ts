@@ -1,4 +1,5 @@
 import {IncomingMessage} from "http";
+import {OpenViduRole} from "openvidu-node-client";
 
 export function toJson(key: any, value?: any): string | undefined {
     if(value) return JSON.stringify({[key]: value});
@@ -12,13 +13,13 @@ export function fromJson(data: any): {} {
 export function roleName(role: "1" | "2" | "3") {
     switch (role) {
         case "1": {
-            return "SUBSCRIBER";
+            return OpenViduRole.SUBSCRIBER;
         }
         case "2": {
-            return "PUBLISHER";
+            return OpenViduRole.PUBLISHER;
         }
         case "3": {
-            return "MODERATOR";
+            return OpenViduRole.MODERATOR;
         }
     }
 }

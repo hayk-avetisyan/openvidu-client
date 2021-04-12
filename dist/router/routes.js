@@ -9,5 +9,6 @@ exports.routes = {
     },
     "/connection/create": {
         "POST": connection_controller_1.ConnectionController.create,
+        "OPTIONS": connection_controller_1.ConnectionController.options,
     }
 };

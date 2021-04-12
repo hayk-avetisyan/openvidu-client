@@ -5,7 +5,7 @@ export class Router {
 
     route(request: IncomingMessage, response: ServerResponse): void {
         let status = false;
-        Router.prepareResponse(response);
+        Router.prepareResponse(request, response);
 
         if (request.url && request.method) {
 
@@ -26,8 +26,10 @@ export class Router {
     }
 
 
-    static prepareResponse(response: ServerResponse): void {
+    static prepareResponse(request: IncomingMessage, response: ServerResponse): void {
         response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "*");
+        response.setHeader("Access-Control-Allow-Headers", "*");
         response.setHeader("Content-Type", "application/json");
     }
 }
